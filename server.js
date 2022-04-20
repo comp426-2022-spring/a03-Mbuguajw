@@ -3,6 +3,48 @@ import { coinFlip, coinFlips, countFlips, flipACoin } from "./modules/coin.mjs"
 const express = require('express');
 const app = express();
 
+function coinFlip() {
+    var num = Math.floor(Math.random()*100);
+    if (num % 2 == 0) {
+      return "heads"
+    } 
+    else {
+      return "tails"
+    }
+  }
+  
+  function coinFlips(flips) {
+    const results = new Array();
+    for (let i=0; i < flips; i++) {
+      results[i] = coinFlip();
+    }
+    return results;
+  }
+  
+  function countFlips(array) {
+    var heads = 0;
+    var tails = 0;
+    for (let i=0; i < array.length; i++) {
+      if (array[i] == "heads") {
+        heads += 1;
+      }
+      if (array[i] == "tails") {
+        tails += 1;
+      }
+    }
+    return {"heads": heads, "tails": tails};
+  }
+  
+  function flipACoin(call) {
+    var results = coinFlip();
+    if (results == call) {
+      return {call: call, flip: results, result: "win"};
+    }
+    else {
+      return {call: call, flip: results, result: "lose"};
+    }
+  }
+
 // Start an app server
 const server = app.listen(5000, () => {
     console.log('App listening on port %PORT%' .replace('%PORT%' ,5000));
