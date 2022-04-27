@@ -2,13 +2,13 @@
 const express = require('express');
 const app = express();
 
-//const arg = ('minimist')(process.argv.slice(2))
-//arg[port]
-//const port = args.port || process.env.PORT || 5000
+const arg = require('minimist')(process.argv.slice(2))
+arg[port]
+const PORT_ = args.port || 5000
 
 // Start an app server
-const server = app.listen(200, () => {
-    console.log('App listening on port %PORT%' .replace('%PORT%' ,200));
+const server = app.listen(PORT_, () => {
+    console.log('App listening on port %PORT%' .replace('%PORT%' ,PORT_));
     
 });
 // Default response for any other request 
@@ -25,23 +25,23 @@ app.get('/app/', (req, res) => {
 
 app.get('/app/flip/', (req, res) => {
     var flip = coinFlip();
-    res.status(200).json({ "flip" : flip})
+    res.json({ "flip" : flip})
 });
 
 app.get('/app/flips/:number', (req, res) => {
     var flips = coinFlips(req.params.number);
     var stats = countFlips(flips);
-    res.status(200).json({"raw" : flips, "summary" : stats});
+    res.json({"raw" : flips, "summary" : stats});
 });
 
 app.get('/app/flip/call/heads', (req, res) => {
     const head = flipACoin('heads');
-    res.status(200).json(head);
+    res.json(head);
 });
 
 app.get('/app/flip/call/tails', (req, res) => {
     const tail = flipACoin('tails');
-    res.status(200).json(tail);
+    res.json(tail);
 });
 
 app.use(function(req, res){
