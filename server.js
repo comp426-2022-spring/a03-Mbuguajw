@@ -45,8 +45,8 @@ function coinFlip() {
   }
 
 // Start an app server
-const server = app.listen(5000, () => {
-    console.log('App listening on port %PORT%' .replace('%PORT%' ,5000));
+const server = app.listen(200, () => {
+    console.log('App listening on port %PORT%' .replace('%PORT%' ,200));
     
 });
 // Default response for any other request 
