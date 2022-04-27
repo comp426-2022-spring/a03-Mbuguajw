@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 const arg = require('minimist')(process.argv.slice(2))
-arg[port]
+arg['port']
 const PORT_ = args.port || 5000
 
 // Start an app server
