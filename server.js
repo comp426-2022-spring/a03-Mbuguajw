@@ -86,9 +86,9 @@ app.get('/app/flip/call/tails', (req, res) => {
     res.status(200).json(tail);
 });
 
-app.use(function(req, res){
-    res.status(404).send('404 NOT FOUND ENDPOINT');
-    res.type("text/plain")
-});
+// app.use(function(req, res){
+//     res.status(404).send('404 NOT FOUND ENDPOINT');
+//     res.type("text/plain")
+// });
 
 app.listen(5000, () => console.log("Can we make this work..."))
