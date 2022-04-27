@@ -2,9 +2,9 @@
 const express = require('express');
 const app = express();
 
-const arg = ('minimist')(process.argv.slice(2))
-arg[port]
-const port = args.port || process.env.PORT || 5000
+//const arg = ('minimist')(process.argv.slice(2))
+//arg[port]
+//const port = args.port || process.env.PORT || 5000
 
 function coinFlip() {
     var num = Math.floor(Math.random()*100);
@@ -49,8 +49,8 @@ function coinFlip() {
   }
 
 // Start an app server
-const server = app.listen(port, () => {
-    console.log('App listening on port %PORT%' .replace('%PORT%' ,port));
+const server = app.listen(200, () => {
+    console.log('App listening on port %PORT%' .replace('%PORT%' ,200));
     
 });
 // Default response for any other request 
