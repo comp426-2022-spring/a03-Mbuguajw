@@ -7,46 +7,46 @@ const app = express();
 //const port = args.port || process.env.PORT || 5000
 
 function coinFlip() {
-    var num = Math.floor(Math.random()*100);
-    if (num % 2 == 0) {
-      return "heads"
-    } 
-    else {
-      return "tails"
-    }
+  var num = Math.floor(Math.random()*100);
+  if (num % 2 == 0) {
+    return "heads"
+  } 
+  else {
+    return "tails"
   }
+}
   
-  function coinFlips(flips) {
-    const results = new Array();
-    for (let i=0; i < flips; i++) {
-      results[i] = coinFlip();
-    }
-    return results;
+function coinFlips(flips) {
+  const results = new Array();
+  for (let i=0; i < flips; i++) {
+    results[i] = coinFlip();
   }
-  
-  function countFlips(array) {
-    var heads = 0;
-    var tails = 0;
-    for (let i=0; i < array.length; i++) {
-      if (array[i] == "heads") {
-        heads += 1;
-      }
-      if (array[i] == "tails") {
-        tails += 1;
-      }
+  return results;
+}
+
+function countFlips(array) {
+  var heads = 0;
+  var tails = 0;
+  for (let i=0; i < array.length; i++) {
+    if (array[i] == "heads") {
+      heads += 1;
     }
-    return {"heads": heads, "tails": tails};
-  }
-  
-  function flipACoin(call) {
-    var results = coinFlip();
-    if (results == call) {
-      return {call: call, flip: results, result: "win"};
-    }
-    else {
-      return {call: call, flip: results, result: "lose"};
+    if (array[i] == "tails") {
+      tails += 1;
     }
   }
+  return {"heads": heads, "tails": tails};
+}
+
+function flipACoin(call) {
+  var results = coinFlip();
+  if (results == call) {
+    return {call: call, flip: results, result: "win"};
+  }
+  else {
+    return {call: call, flip: results, result: "lose"};
+  }
+}
 
 // Start an app server
 const server = app.listen(200, () => {
@@ -86,9 +86,9 @@ app.get('/app/flip/call/tails', (req, res) => {
     res.status(200).json(tail);
 });
 
-// app.use(function(req, res){
-//     res.status(404).send('404 NOT FOUND ENDPOINT');
-//     res.type("text/plain")
-// });
+app.use(function(req, res){
+    res.status(404).send('404 NOT FOUND ENDPOINT');
+    res.type("text/plain")
+});
 
 app.listen(5000, () => console.log("Can we make this work..."))
