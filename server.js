@@ -4,7 +4,7 @@ const app = express();
 
 const arg = require('minimist')(process.argv.slice(2))
 arg['port']
-const PORT_ = args.port || 5000
+const PORT_ = arg.port || 5000
 
 // Start an app server
 const server = app.listen(PORT_, () => {
