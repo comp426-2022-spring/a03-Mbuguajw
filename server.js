@@ -2,6 +2,10 @@
 const express = require('express');
 const app = express();
 
+const arg = ('minimist')(process.argv.slice(2))
+arg[port]
+const port = args.port || process.env.PORT || 5000
+
 function coinFlip() {
     var num = Math.floor(Math.random()*100);
     if (num % 2 == 0) {
@@ -45,8 +49,8 @@ function coinFlip() {
   }
 
 // Start an app server
-const server = app.listen(200, () => {
-    console.log('App listening on port %PORT%' .replace('%PORT%' ,200));
+const server = app.listen(port, () => {
+    console.log('App listening on port %PORT%' .replace('%PORT%' ,port));
     
 });
 // Default response for any other request 
@@ -83,7 +87,8 @@ app.get('/app/flip/call/tails', (req, res) => {
 });
 
 app.use(function(req, res){
-    res.status(404).send('404 NOT FOUND');
+    res.status(404).send('404 NOT FOUND ENDPOINT');
+    res.type("text/plain")
 });
 
 app.listen(5000, () => console.log("Can we make this work..."))
